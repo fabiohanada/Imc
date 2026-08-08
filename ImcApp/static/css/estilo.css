@@ -1,0 +1,121 @@
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: #f4f4f9; 
+    margin: 0; 
+    padding: 20px; 
+}
+
+.container { 
+    max-width: 700px; 
+    margin: 0 auto; 
+}
+
+h1, h2, h3 { 
+    color: #333; 
+    text-align: center;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 25px 0;
+}
+
+/* Card do Formulário de Cadastro */
+.card-form { 
+    background: #fff; 
+    padding: 25px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+}
+
+.card-form h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #007bff;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+}
+
+/* Botão de Calcular */
+.btn-calcular { 
+    width: 100%;
+    background-color: #28a745; 
+    color: white; 
+    padding: 12px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-calcular:hover {
+    background-color: #218838;
+}
+
+/* Lista e Cards do Histórico de IMC */
+.lista-avaliacoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.card-resultado { 
+    background: #fff; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); 
+    border-left: 5px solid #007bff;
+}
+
+.card-resultado p {
+    margin: 5px 0;
+    color: #444;
+}
+
+.imc-destaque {
+    font-size: 18px;
+    color: #28a745;
+    margin-top: 10px !important;
+}
+
+/* Botão de Voltar (caso precise) */
+.btn-voltar { 
+    display: inline-block; 
+    margin-bottom: 20px; 
+    color: #007bff; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+
+.btn-voltar:hover {
+    text-decoration: underline;
+}

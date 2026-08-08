@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos - IMC</title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Alunos</h1>
+
+        <div class="card-form">
+            <h3>Novo Aluno</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
+                </div>
+                <button type="submit" class="btn-calcular">Cadastrar Nome</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <h3>Alunos Cadastrados (Clique para ver/calcular IMC)</h3>
+        <div class="lista-avaliacoes">
+            {% for pessoa in pessoas %}
+                <div class="card-resultado" style="text-align: center;">
+                    <a href="{% url 'calcular_imc' pessoa.id %}" style="font-size: 18px; font-weight: bold; color: #007bff; text-decoration: none;">
+                        {{ pessoa.nome }}
+                    </a>
+                </div>
+            {% empty %}
+                <p style="text-align: center;">Nenhum aluno cadastrado ainda.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

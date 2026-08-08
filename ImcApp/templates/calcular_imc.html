@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC - {{ pessoa.nome }}</title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'home' %}" class="btn-voltar">← Voltar para Lista da Alunos</a>
+        <h1>Avaliação de IMC</h1>
+        <h2>Paciente: {{ pessoa.nome }}</h2>
+
+        <hr>
+
+        <!-- Formulário para Inserção de Dados -->
+        <div class="card-form">
+            <h3>Nova Avaliação</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="peso">Peso (kg):</label>
+                    <input type="number" id="peso" name="peso" step="1" min="1" max="200" placeholder="Ex: 70" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="altura">Altura (m):</label>
+                    <input type="number" id="altura" name="altura" step="0.01" min="0.5" max="2.5" placeholder="Ex: 1.75" required>
+                </div>
+
+                <button type="submit" class="btn-calcular">Calcular e Salvar</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <!-- Histórico de Avaliações e Resultados -->
+        <h3>Histórico de Avaliações</h3>
+        <div class="lista-avaliacoes">
+            {% for avaliacao in avaliacoes %}
+                <div class="card-resultado">
+                    <p><strong>Peso:</strong> {{ avaliacao.peso }} kg</p>
+                    <p><strong>Altura:</strong> {{ avaliacao.altura }} m</p>
+                    <p class="imc-destaque"><strong>IMC:</strong> {{ avaliacao.calcular_imc }}</p>
+                </div>
+            {% empty %}
+                <p style="text-align: center;">Nenhuma avaliação registrada para {{ pessoa.nome }} ainda.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
